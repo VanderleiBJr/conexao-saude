@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Saúde - Cadastro de Paciente</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        input, button {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <form @submit.prevent="cadastrarPaciente">
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" v-model="paciente.rg" required>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" v-model="paciente.cpf" required>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" v-model="paciente.endereco" required>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" v-model="paciente.nome" required>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="text" id="dataNascimento" v-model="paciente.data_nascimento" required>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            paciente: {
+                rg: '',
+                cpf: '',
+                endereco: '',
+                nome: '',
+                data_nascimento: ''
+            }
+        },
+        methods: {
+            cadastrarPaciente() {
+                // Aqui você pode enviar os dados para o backend (usando axios, por exemplo)
+                console.log('Dados do paciente:', this.paciente);
+                // Resetar o formulário após o envio
+                this.paciente = {
+                    rg: '',
+                    cpf: '',
+                    endereco: '',
+                    nome: '',
+                    data_nascimento: ''
+                };
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
